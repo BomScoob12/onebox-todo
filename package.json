@@ -1,7 +1,7 @@
 {
   "name": "todo-ssr",
   "version": "1.0.0",
-  "description": "Todo app with React frontend and Express backend",
+  "description": "Complete fullstack Todo app - React frontend served by Express backend",
   "main": "server/server.js",
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
