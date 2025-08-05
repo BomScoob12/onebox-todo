@@ -2,6 +2,8 @@
 
 A full-stack Todo application with React frontend and Express backend.
 
+> ✨ This project is built with the **code-by-cursor** vibe: fast iteration, low boilerplate, and full control.
+
 ## 🚀 Features
 
 - ✅ **React Frontend** - Modern UI with Vite build system
@@ -69,12 +71,6 @@ npm run dev:server    # Express server (port 3000)
 npm run build
 ```
 
-## 🚀 Production
-
-```bash
-# Start production server
-npm start
-```
 
 ## 📡 API Endpoints
 
@@ -117,7 +113,6 @@ This project demonstrates:
 1. **Static File Serving** - Express serves React build
 2. **API Integration** - Backend API with frontend
 3. **CRUD Operations** - Full database operations
-4. **Modern Development** - Hot reloading and build tools
 
 ## 🔄 Development Workflow
 
