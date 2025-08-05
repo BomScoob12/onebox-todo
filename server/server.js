@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { todoRouter } from './api/todo-router.js';
@@ -16,12 +17,22 @@ app.use(express.json());
 app.use('/api', todoRouter);
 
 // Serve static files from the React build directory
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// Check if we're in Docker (public folder) or local development (client/dist)
+const staticPath = path.join(__dirname, 'public');
+const clientDistPath = path.join(__dirname, '../client/dist');
 
-// Handle React routing, return all requests to React app
-app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-});
+// Try Docker path first, then fallback to local development path
+if (fs.existsSync(staticPath)) {
+  app.use(express.static(staticPath));
+  app.get('*', (_, res) => {
+    res.sendFile(path.join(staticPath, 'index.html'));
+  });
+} else {
+  app.use(express.static(clientDistPath));
+  app.get('*', (_, res) => {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

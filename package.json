@@ -11,7 +11,11 @@
     "build:client": "cd client && npm run build",
     "start": "cd server && npm start",
     "install:all": "npm install && cd client && npm install && cd ../server && npm install",
-    "setup": "npm run install:all && npm run build && npm start"
+    "setup": "npm run install:all && npm run build && npm start",
+    "docker:build": "docker build -t todo-app .",
+    "docker:run": "docker run -p 3000:3000 todo-app",
+    "docker:compose": "docker-compose up -d",
+    "docker:compose:down": "docker-compose down"
   },
   "keywords": ["todo", "react", "express", "fullstack"],
   "author": "BomScoob",

@@ -71,6 +71,44 @@ npm run dev:server    # Express server (port 3000)
 npm run build
 ```
 
+## 🚀 Production
+
+```bash
+# Start production server
+npm start
+```
+
+## 🐳 Docker Deployment
+
+### **Using Docker Compose (Recommended)**
+```bash
+# Build and run with Docker Compose
+npm run docker:compose
+
+# Stop the container
+npm run docker:compose:down
+```
+
+### **Using Docker directly**
+```bash
+# Build the Docker image
+npm run docker:build
+
+# Run the container
+npm run docker:run
+```
+
+### **Manual Docker commands**
+```bash
+# Build image
+docker build -t todo-app .
+
+# Run container
+docker run -p 3000:3000 todo-app
+
+# Run with data persistence
+docker run -p 3000:3000 -v $(pwd)/server/data:/app/server/data todo-app
+```
 
 ## 📡 API Endpoints
 
@@ -90,6 +128,9 @@ npm run build
 - `npm run build` - Build client for production
 - `npm run start` - Start production server
 - `npm run install:all` - Install all dependencies
+- `npm run docker:compose` - Build and run with Docker Compose
+- `npm run docker:build` - Build Docker image
+- `npm run docker:run` - Run Docker container
 
 ### **Client Scripts**
 - `npm run dev` - Start Vite dev server
