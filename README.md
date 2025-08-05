@@ -1,6 +1,7 @@
 # Todo App
 
-A complete fullstack Todo application - React frontend and Express backend integrated and served from a single Express server.
+A fullstack Todo application demonstrating React + Express integration.
+Shows both development (separate servers) and production (unified server) setups.
 
 > ✨ This project is built with the **code-by-cursor**
 
