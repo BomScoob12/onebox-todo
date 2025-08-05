@@ -4,7 +4,7 @@ import { v6 as uuidV6 } from 'uuid';
 import { readJsonFile, writeJsonFile, findTodoIndexById } from '../utils/json-util.js';
 
 // from /server
-const TODO_PATHS = path.resolve('data/todos.json');
+const TODO_PATHS = path.resolve('./data/todos.json');
 
 const router = express.Router();
 
