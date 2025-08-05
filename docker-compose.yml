@@ -4,10 +4,10 @@ services:
   todo-app:
     build: .
     ports:
-      - "3000:3000"
+      - "30000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
     volumes:
-      - ./server/data:/app/server/data
+      - C:/local-app/todo-app:/app/server/data
     restart: unless-stopped 

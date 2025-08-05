@@ -5,6 +5,7 @@ export const readJsonFile = (filePath) => {
     // Check if file exists
     if (!fs.existsSync(filePath)) {
       console.warn(`File does not exist at ${filePath}, creating empty array`);
+      fs.writeFileSync(filePath, JSON.stringify([]), 'utf8');
       return [];
     }
     
@@ -21,6 +22,11 @@ export const readJsonFile = (filePath) => {
 
 export const writeJsonFile = (filePath, data) => {
   try {
+    if (!fs.existsSync(filePath)) {
+      console.warn(`File does not exist at ${filePath}, creating new file`);
+      fs.writeFileSync(filePath, JSON.stringify([]), 'utf8');
+    }
+
     if (!Array.isArray(data)) {
       throw new Error('Data must be an array');
     }
