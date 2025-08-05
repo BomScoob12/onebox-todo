@@ -2,7 +2,7 @@
 
 A full-stack Todo application with React frontend and Express backend.
 
-> ✨ This project is built with the **code-by-cursor** vibe: fast iteration, low boilerplate, and full control.
+> ✨ This project is built with the **code-by-cursor**
 
 ## 🚀 Features
 
