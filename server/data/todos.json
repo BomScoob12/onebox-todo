@@ -1,12 +1,12 @@
 [
   {
     "title": "task1",
-    "isComplete": false,
+    "completed": false,
     "id": "1f072028-7927-69b0-8c83-4528c740ca7a"
   },
   {
     "title": "task2",
-    "isComplete": false,
+    "completed": false,
     "id": "1f072032-2ae4-6500-a9b6-06f4e07fc891"
   }
 ]

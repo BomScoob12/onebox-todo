@@ -70,3 +70,25 @@ export const updateTodo = async (id, updatedTodo) => {
     throw error;
   }
 };
+
+export const markTodoComplete = async (id, completed) => {
+  try {
+    const response = await fetch(`/api/todos/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ completed }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const todo = await response.json();
+    return todo;
+  } catch (error) {
+    console.error('Error marking todo complete:', error);
+    throw error;
+  }
+};
