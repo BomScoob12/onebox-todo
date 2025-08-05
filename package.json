@@ -10,11 +10,12 @@
     "build": "npm run build:client",
     "build:client": "cd client && npm run build",
     "start": "cd server && npm start",
-    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "setup": "npm run install:all && npm run build && npm start"
   },
   "keywords": ["todo", "react", "express", "fullstack"],
-  "author": "",
-  "license": "ISC",
+  "author": "BomScoob",
+  "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
   }

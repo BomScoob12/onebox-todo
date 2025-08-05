@@ -1,90 +1,134 @@
-# onebox-todo
+# Todo App
 
-A simple fullstack Todo app built with **React**, **Express**, and **JSON file storage**, designed to demonstrate the foundation of a modern fullstack app without using high-level frameworks or databases.
-This project **serves the static frontend built from React** and exposes **API routes via Express**, simulating a production setup similar to how frameworks like Next.js operate behind the scenes — but all done manually for learning purposes.
+A full-stack Todo application with React frontend and Express backend.
 
-## 🔧 Features
+## 🚀 Features
 
-- 🧠 Explore how a single Express server can serve both frontend and backend
-- 📁 JSON file used for lightweight storage (no database needed)
-- ⚛️ React frontend (served as static files)
-- 🌐 RESTful API using Express
-- 🐳 Docker-ready setup for local deployment
+- ✅ **React Frontend** - Modern UI with Vite build system
+- ✅ **Express Backend** - RESTful API with JSON file storage
+- ✅ **CRUD Operations** - Create, Read, Update, Delete todos
+- ✅ **Real-time Updates** - Instant UI updates with API calls
+- ✅ **Responsive Design** - Works on desktop and mobile
 
-## 📁 Folder Structure
+## 📁 Project Structure
+
 ```
-onebox-todo/
-├── client/           # React frontend app
-│   ├── public/
+todo-ssr/
+├── client/                 # React frontend
 │   ├── src/
-│   └── ...
-├── server/           # Express backend
-│   ├── api/          # API routes
-│   ├── utils/        # File utilities, etc.
-│   ├── data/         # JSON file storage
-│   └── server.js     # Entry point
-├── Dockerfile
-├── README.md
-└── ...
+│   │   ├── components/     # React components
+│   │   ├── api/           # API client functions
+│   │   └── App.jsx        # Main app component
+│   ├── dist/              # Build output
+│   └── package.json
+├── server/                # Express backend
+│   ├── api/              # API routes
+│   ├── data/             # JSON data storage
+│   ├── utils/            # Utility functions
+│   ├── server.js         # Regular Express server
+│   └── package.json
+├── package.json          # Root package.json
+└── README.md
 ```
 
-## 🚀 Getting Started
+## 🛠️ Installation
 
-### 1. Install dependencies
+### **One-Command Setup (Recommended)**
+```bash
+# Install, build, and start the app in one command
+npm run setup
+```
+
+### **Manual Installation**
+```bash
+# Install all dependencies (root, client, and server)
+npm run install:all
+
+# Or install individually
+npm install
+cd client && npm install
+cd server && npm install
+```
+
+## 🚀 Development
+
+### **Development Mode**
+```bash
+# Run both client and server in development
+npm run dev
+
+# Or run individually
+npm run dev:client    # React dev server (port 5173)
+npm run dev:server    # Express server (port 3000)
+```
+
+## 🏗️ Building
 
 ```bash
-# From root, install backend dependencies
-cd server
-npm install
-
-# Install frontend dependencies
-cd ../client
-npm install
-````
-
-### 2. Build React app
-
-```bash
-cd client
+# Build client for production
 npm run build
 ```
 
-### 3. Run the server
+## 🚀 Production
 
 ```bash
-cd ../server
-node server.js
+# Start production server
+npm start
 ```
 
-Express will serve:
+## 📡 API Endpoints
 
-* Static files from `client/build`
-* API under `/api/*`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/todos` | Get all todos |
+| POST | `/api/todos` | Create new todo |
+| PUT | `/api/todos/:id` | Update todo |
+| PATCH | `/api/todos/:id` | Mark todo complete/incomplete |
+| DELETE | `/api/todos/:id` | Delete todo |
 
-### 4. Open in browser
+## 🔧 Scripts Reference
 
-```
-http://localhost:3000
-```
+### **Root Scripts**
+- `npm run setup` - Install, build, and start (one command)
+- `npm run dev` - Start development servers
+- `npm run build` - Build client for production
+- `npm run start` - Start production server
+- `npm run install:all` - Install all dependencies
 
----
+### **Client Scripts**
+- `npm run dev` - Start Vite dev server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
 
-## 🐳 Docker (Optional)
+### **Server Scripts**
+- `npm run dev` - Start Express server
+- `npm start` - Start production server
 
-To run using Docker:
+## 🌐 Access Points
 
-```bash
-docker build -t onebox-todo .
-docker run -p 3000:3000 onebox-todo
-```
+- **Production**: http://localhost:3000
+- **Client Dev**: http://localhost:5173
+- **API Base**: http://localhost:3000/api
 
----
+## 📝 Learning Fullstack
 
-## 📚 Learning Goals
+This project demonstrates:
 
-This project is ideal if you're learning:
+1. **Static File Serving** - Express serves React build
+2. **API Integration** - Backend API with frontend
+3. **CRUD Operations** - Full database operations
+4. **Modern Development** - Hot reloading and build tools
 
-* How static frontends are served by Node/Express
-* How React and Express communicate via API
-* How to deploy a fullstack app manually
-* How frameworks like Next.js automate these steps for you
+## 🔄 Development Workflow
+
+1. **Development**: Use `npm run dev` for hot reloading
+2. **Testing**: Build and test with `npm run build && npm start`
+3. **Production**: Build and deploy with `npm run build && npm start`
+
+## 📦 Technologies Used
+
+- **Frontend**: React 19, Vite, CSS3
+- **Backend**: Express 4, Node.js
+- **Data**: JSON file storage
+- **Build**: Vite, ES Modules
+- **Development**: Concurrently, Hot reloading
