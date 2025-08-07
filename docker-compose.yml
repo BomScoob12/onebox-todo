@@ -9,5 +9,8 @@ services:
       - NODE_ENV=production
       - PORT=3000
     volumes:
-      - C:/local-app/todo-app:/app/server/data
+      - type: bind
+        source: C:/local-app/todo-app
+        target: /app/server/data
     restart: unless-stopped 
+    
