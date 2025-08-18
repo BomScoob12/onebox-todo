@@ -5,6 +5,20 @@
     "completed": false,
     "created_at": "2023-10-01T12:00:00Z",
     "updated_at": "2023-10-01T12:00:00Z",
-    "due_date": "2023-10-15T12:00:00Z"
+    "due_date": "2023-10-15T12:00:00Z",
+    "description": "",
+    "dueDate": "2025-08-19T00:00:00.000Z",
+    "eisenhowerLabel": "Do",
+    "updatedAt": "2025-08-18T05:15:54.070Z"
+  },
+  {
+    "title": "Test",
+    "description": "BomScoob",
+    "eisenhowerLabel": "Schedule",
+    "createdAt": "2025-08-18T05:12:18.041Z",
+    "updatedAt": "2025-08-18T05:12:27.700Z",
+    "completed": false,
+    "dueDate": "2025-08-12T00:00:00.000Z",
+    "id": "1f07bf1e-9563-6080-b24c-7a2b25ae3c57"
   }
 ]

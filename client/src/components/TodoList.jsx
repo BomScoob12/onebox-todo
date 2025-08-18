@@ -5,16 +5,8 @@ const TodoList = ({ todos, onUpdate, onDelete }) => {
   const [searchParam, setSearchParam] = React.useState('');
   const [todoList, setTodoList] = React.useState(todos);
 
-  const sortDefault = (todos) => {
-    return todos.sort((a, b) => {
-      if (a?.dueDate && b?.dueDate) {
-        return new Date(b.dueDate) - new Date(a.dueDate);
-      }
-    });
-  };
-
   React.useEffect(() => {
-    setTodoList(sortDefault(todos));
+    setTodoList(todos);
   }, [todos]);
 
   React.useEffect(() => {

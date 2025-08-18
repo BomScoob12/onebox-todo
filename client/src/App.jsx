@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchTodos } from './api/todo-api';
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
@@ -17,7 +17,8 @@ const TODO = [
   {
     id: 2,
     title: 'Another Todo',
-    description: 'This is a sample todo item to demonstrate the app functionality.',
+    description:
+      'This is a sample todo item to demonstrate the app functionality.',
     completed: false,
     createdAt: new Date(Date.now() - 3 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 3 weeks ago
     updatedAt: new Date(Date.now() - 2 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 2 weeks ago
@@ -58,16 +59,23 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const sortDefault = (todos) => {
+    return todos.sort((a, b) => {
+      if (a?.dueDate && b?.dueDate) {
+        return new Date(a.dueDate) - new Date(b.dueDate);
+      }
+    });
+  };
+
   useEffect(() => {
     loadTodos();
-    setTodos(TODO); // Initializing with static data for demo purposes
   }, []);
 
   const loadTodos = async () => {
     try {
       setLoading(true);
       const fetchedTodos = await fetchTodos();
-      setTodos(fetchedTodos);
+      setTodos(sortDefault(fetchedTodos));
       setError(null);
     } catch (err) {
       setError('Failed to load todos. Please try again.');
@@ -78,20 +86,24 @@ function App() {
   };
 
   const handleAddTodo = (newTodo) => {
-    setTodos(prevTodos => [...prevTodos, newTodo]);
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
   const handleUpdateTodo = (updatedTodo) => {
-    setTodos(prevTodos => 
-      prevTodos.map(todo => 
-        todo.id === updatedTodo.id ? updatedTodo : todo
-      )
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
     );
   };
 
   const handleDeleteTodo = (todoId) => {
-    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== todoId));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
   };
+
+  React.useEffect(() => {
+    if (todos.length > 0) {
+      setTodos(sortDefault(todos));
+    }
+  }, [todos]);
 
   if (loading) {
     return (
@@ -120,10 +132,10 @@ function App() {
         )}
 
         <AddTodo onAdd={handleAddTodo} />
-        <TodoList 
-          todos={todos} 
-          onUpdate={handleUpdateTodo} 
-          onDelete={handleDeleteTodo} 
+        <TodoList
+          todos={todos}
+          onUpdate={handleUpdateTodo}
+          onDelete={handleDeleteTodo}
         />
       </main>
     </div>
