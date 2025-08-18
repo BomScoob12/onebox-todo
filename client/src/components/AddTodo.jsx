@@ -24,7 +24,12 @@ const AddTodo = ({ onAdd }) => {
         dueDate: dueDate, // Default to null, can be set later
       });
       onAdd(newTodo);
+
+      // Reset form fields after adding
       setTitle('');
+      setDescription('');
+      setEisenhowerLabel('Do');
+      setDueDate(null);
     } catch (error) {
       console.error('Error adding todo:', error);
     } finally {
@@ -72,7 +77,7 @@ const AddTodo = ({ onAdd }) => {
                 }
               />
             </div>
-            
+
             <div className="todo-category">
               <label htmlFor="todo-category" className="category-label">
                 Eisenhower priority:
