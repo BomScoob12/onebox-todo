@@ -85,8 +85,30 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
                 {todo.title}
               </h3>
             </div>
+            <div>
+              {todo.description && (
+                <p className="todo-description">{todo.description}</p>
+              )}
+              <p className="todo-date">
+                {todo?.dueDate ? (
+                  <>
+                    Due date:{' '}
+                    {new Date(todo?.dueDate).toLocaleDateString('th-TH')}
+                  </>
+                ) : (
+                  <>No Due date</>
+                )}
+              </p>
+              <p>{todo.eisenhowerLabel}</p>
+            </div>
             <div className="todo-actions">
-              <button onClick={() => handleToggleComplete} disabled={isLoading} className={todo.completed ? 'completed-btn' : 'not-completed-btn'}>
+              <button
+                onClick={() => handleToggleComplete}
+                disabled={isLoading}
+                className={
+                  todo.completed ? 'completed-btn' : 'not-completed-btn'
+                }
+              >
                 {todo.completed ? 'Mark as not complete' : 'Mark Complete'}
               </button>
               <button onClick={() => setIsEditing(true)} disabled={isLoading}>

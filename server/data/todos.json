@@ -2,6 +2,9 @@
   {
     "title": "implement local ai chat",
     "id": "1f0721c7-e003-6940-b233-b13ff3c0df8c",
-    "completed": false
+    "completed": false,
+    "created_at": "2023-10-01T12:00:00Z",
+    "updated_at": "2023-10-01T12:00:00Z",
+    "due_date": "2023-10-15T12:00:00Z"
   }
 ]

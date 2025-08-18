@@ -9,18 +9,49 @@ const TODO = [
     id: 1,
     title: 'Sample Todo',
     completed: false,
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
+    updatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+    dueDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(), // due in 3 days
+    eisenhowerLabel: 'Do',
   },
   {
     id: 2,
     title: 'Another Todo',
-    completed: true,
+    description: 'This is a sample todo item to demonstrate the app functionality.',
+    completed: false,
+    createdAt: new Date(Date.now() - 3 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 3 weeks ago
+    updatedAt: new Date(Date.now() - 2 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 2 weeks ago
+    dueDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(), // due in 1 day
+    eisenhowerLabel: 'Delete',
   },
   {
     id: 3,
-    title: 'Yet Another Todo',
+    title: 'Third Todo',
     completed: false,
+    createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+    updatedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(), // 12 hours ago
+    dueDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // due in 5 days
+    eisenhowerLabel: 'Schedule',
   },
-]
+  {
+    id: 4,
+    title: 'Fourth Todo',
+    completed: false,
+    createdAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(), // 4 days ago
+    updatedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days ago
+    dueDate: null,
+    eisenhowerLabel: 'Delegate',
+  },
+  {
+    id: 5,
+    title: 'Fifth Todo',
+    completed: false,
+    createdAt: new Date(Date.now() - 1 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 1 week ago
+    updatedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
+    dueDate: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(), // due in 4 days
+    eisenhowerLabel: 'Delegate',
+  },
+];
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -29,6 +60,7 @@ function App() {
 
   useEffect(() => {
     loadTodos();
+    setTodos(TODO); // Initializing with static data for demo purposes
   }, []);
 
   const loadTodos = async () => {
@@ -73,6 +105,7 @@ function App() {
 
   return (
     <div className="app">
+      <title>Local Todo App</title>
       <header className="app-header">
         <h1>Todo App</h1>
         <p>Manage your tasks efficiently</p>
@@ -88,7 +121,7 @@ function App() {
 
         <AddTodo onAdd={handleAddTodo} />
         <TodoList 
-          todos={TODO} 
+          todos={todos} 
           onUpdate={handleUpdateTodo} 
           onDelete={handleDeleteTodo} 
         />
