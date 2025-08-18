@@ -37,30 +37,19 @@ todo-ssr/
 ## 🛠️ Installation
 
 ### **One-Command Setup (Recommended)**
+
 ```bash
-# Install, build, and start the app in one command
+# Install, build, and start the app in one command (in local environment)
 npm run setup
-```
-
-### **Manual Installation**
-```bash
-# Install all dependencies (root, client, and server)
-npm run install:all
-
-# Or install individually
-npm install
-cd client && npm install
-cd server && npm install
 ```
 
 ## 🚀 Development
 
 ### **Development Mode**
-```bash
-# Run both client and server in development
-npm run dev
 
-# Or run individually
+```bash
+
+# run individually
 npm run dev:client    # React dev server (port 5173)
 npm run dev:server    # Express server (port 3000)
 ```
@@ -68,20 +57,17 @@ npm run dev:server    # Express server (port 3000)
 ## 🏗️ Building
 
 ```bash
-# Build client for production
+# Build client for local production
 npm run build
-```
 
-## 🚀 Production
-
-```bash
-# Start production server
+# Start local server
 npm start
 ```
 
 ## 🐳 Docker Deployment
 
-### **Using Docker Compose (Recommended)**
+### **Using Docker Compose (Recommended if you need to binding file to localhost)**
+
 ```bash
 # Build and run with Docker Compose
 npm run docker:compose
@@ -91,6 +77,7 @@ npm run docker:compose:down
 ```
 
 ### **Using Docker directly**
+
 ```bash
 # Build the Docker image
 npm run docker:build
@@ -100,6 +87,7 @@ npm run docker:run
 ```
 
 ### **Manual Docker commands**
+
 ```bash
 # Build image
 docker build -t todo-app .
@@ -108,22 +96,23 @@ docker build -t todo-app .
 docker run -p 3000:3000 todo-app
 
 # Run with data persistence
-docker run -p 3000:3000 -v $(pwd)/server/data:/app/server/data todo-app
+docker run -p 3000:3000 -v $(pwd)/todo-app/data:/app/server/data todo-app
 ```
 
 ## 📡 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/todos` | Get all todos |
-| POST | `/api/todos` | Create new todo |
-| PUT | `/api/todos/:id` | Update todo |
-| PATCH | `/api/todos/:id` | Mark todo complete/incomplete |
-| DELETE | `/api/todos/:id` | Delete todo |
+| Method | Endpoint         | Description                   |
+| ------ | ---------------- | ----------------------------- |
+| GET    | `/api/todos`     | Get all todos                 |
+| POST   | `/api/todos`     | Create new todo               |
+| PUT    | `/api/todos/:id` | Update todo                   |
+| PATCH  | `/api/todos/:id` | Mark todo complete/incomplete |
+| DELETE | `/api/todos/:id` | Delete todo                   |
 
 ## 🔧 Scripts Reference
 
 ### **Root Scripts**
+
 - `npm run setup` - Install, build, and start (one command)
 - `npm run dev` - Start development servers
 - `npm run build` - Build client for production
@@ -134,11 +123,13 @@ docker run -p 3000:3000 -v $(pwd)/server/data:/app/server/data todo-app
 - `npm run docker:run` - Run Docker container
 
 ### **Client Scripts**
+
 - `npm run dev` - Start Vite dev server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 
 ### **Server Scripts**
+
 - `npm run dev` - Start Express server
 - `npm start` - Start production server
 
