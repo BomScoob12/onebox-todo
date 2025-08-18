@@ -4,6 +4,24 @@ import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
 import './App.css';
 
+const TODO = [
+  {
+    id: 1,
+    title: 'Sample Todo',
+    completed: false,
+  },
+  {
+    id: 2,
+    title: 'Another Todo',
+    completed: true,
+  },
+  {
+    id: 3,
+    title: 'Yet Another Todo',
+    completed: false,
+  },
+]
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -70,7 +88,7 @@ function App() {
 
         <AddTodo onAdd={handleAddTodo} />
         <TodoList 
-          todos={todos} 
+          todos={TODO} 
           onUpdate={handleUpdateTodo} 
           onDelete={handleDeleteTodo} 
         />

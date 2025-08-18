@@ -212,7 +212,7 @@ body {
   gap: 1rem;
 }
 
-.todo-header input[type="checkbox"] {
+.todo-header input[type='checkbox'] {
   width: 20px;
   height: 20px;
   accent-color: #28a745;
@@ -248,12 +248,34 @@ body {
   transition: all 0.2s ease;
 }
 
-.todo-actions button:first-child {
+/* Not Completed = Green */
+.todo-actions .not-completed-btn {
+  background: #28a745; /* green */
+  color: white;
+  border: none;
+}
+
+.todo-actions .not-completed-btn:hover:not(:disabled) {
+  background: #218838; /* darker green */
+}
+
+/* Completed = Undo = Light Blue */
+.todo-actions .completed-btn {
+  background: #e3f2fd; /* light blue */
+  color: #1976d2;      /* blue text */
+  border: none;
+}
+
+.todo-actions .completed-btn:hover:not(:disabled) {
+  background: #bbdefb; /* slightly darker blue */
+}
+
+.todo-actions button:nth-child(2) {
   background: #e3f2fd;
   color: #1976d2;
 }
 
-.todo-actions button:first-child:hover:not(:disabled) {
+.todo-actions button:nth-child(2):hover:not(:disabled) {
   background: #bbdefb;
 }
 
@@ -336,29 +358,29 @@ body {
   .app {
     padding: 1rem;
   }
-  
+
   .app-header h1 {
     font-size: 2.5rem;
   }
-  
+
   .app-main {
     padding: 1.5rem;
   }
-  
+
   .input-group {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .add-btn {
     width: 100%;
   }
-  
+
   .todo-actions {
     flex-direction: column;
   }
-  
+
   .edit-actions {
     flex-direction: column;
   }
-} 
+}

@@ -8,7 +8,7 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
 
   const handleEdit = async () => {
     if (editText.trim() === '') return;
-    
+
     setIsLoading(true);
     try {
       const updatedTodo = await updateTodo(todo.id, { title: editText });
@@ -86,10 +86,17 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
               </h3>
             </div>
             <div className="todo-actions">
+              <button onClick={() => handleToggleComplete} disabled={isLoading} className={todo.completed ? 'completed-btn' : 'not-completed-btn'}>
+                {todo.completed ? 'Mark as not complete' : 'Mark Complete'}
+              </button>
               <button onClick={() => setIsEditing(true)} disabled={isLoading}>
                 Edit
               </button>
-              <button onClick={handleDelete} disabled={isLoading} className="delete-btn">
+              <button
+                onClick={handleDelete}
+                disabled={isLoading}
+                className="delete-btn"
+              >
                 {isLoading ? 'Deleting...' : 'Delete'}
               </button>
             </div>
@@ -100,4 +107,4 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
   );
 };
 
-export default TodoCard; 
+export default TodoCard;
