@@ -4,6 +4,13 @@ import { updateTodo, deleteTodo, markTodoComplete } from '../api/todo-api';
 const TodoCard = ({ todo, onUpdate, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.title);
+  const [editDescription, setEditDescription] = useState(
+    todo.description || ''
+  );
+  const [editDueDate, setEditDueDate] = useState(todo.dueDate || null);
+  const [editEisenhowerLabel, setEditEisenhowerLabel] = useState(
+    todo.eisenhowerLabel || 'Do'
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   const handleEdit = async () => {
@@ -11,7 +18,13 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
 
     setIsLoading(true);
     try {
-      const updatedTodo = await updateTodo(todo.id, { title: editText });
+      const updatedTodo = await updateTodo(todo.id, {
+        title: editText.trim(),
+        description: editDescription.trim(),
+        dueDate: editDueDate,
+        eisenhowerLabel: editEisenhowerLabel,
+        updatedAt: new Date().toISOString(),
+      });
       onUpdate(updatedTodo);
       setIsEditing(false);
     } catch (error) {
@@ -55,14 +68,75 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
       <div className="todo-content">
         {isEditing ? (
           <div className="edit-form">
+            {/* Title */}
             <input
               type="text"
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
+              placeholder="Title"
               onKeyDown={(e) => e.key === 'Enter' && handleEdit()}
               disabled={isLoading}
               autoFocus
+              className="todo-description"
             />
+
+            {/* Description */}
+            <textarea
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+              placeholder="Description"
+              disabled={isLoading}
+              className="todo-description"
+              rows={3}
+            />
+
+            {/* Due Date */}
+            <div className="todo-due-date">
+              <label htmlFor="edit-due-date" className="due-date-label">
+                Due Date (optional):
+              </label>
+              <input
+                type="date"
+                id="edit-due-date"
+                value={
+                  editDueDate
+                    ? new Date(editDueDate).toISOString().split('T')[0]
+                    : ''
+                }
+                onChange={(e) =>
+                  setEditDueDate(
+                    e.target.value
+                      ? new Date(e.target.value).toISOString()
+                      : null
+                  )
+                }
+                disabled={isLoading}
+                className="due-date-input"
+              />
+            </div>
+
+            {/* Eisenhower Label */}
+            <div className="todo-category">
+              <label htmlFor="edit-eisenhower" className="category-label">
+                Eisenhower Priority:
+              </label>
+              <select
+                id="edit-eisenhower"
+                value={editEisenhowerLabel}
+                onChange={(e) => setEditEisenhowerLabel(e.target.value)}
+                disabled={isLoading}
+                className="category-select"
+              >
+                <option value="Do">Do (Urgent, Important)</option>
+                <option value="Schedule">
+                  Schedule (Not Urgent, Important)
+                </option>
+                <option value="Delegate">Delegate (Urgent, Important)</option>
+                <option value="Delete">
+                  Delete (Not Urgent, Not Important)
+                </option>
+              </select>
+            </div>
             <div className="edit-actions">
               <button onClick={handleEdit} disabled={isLoading}>
                 {isLoading ? 'Saving...' : 'Save'}
