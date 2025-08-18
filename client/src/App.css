@@ -314,11 +314,32 @@ body {
   gap: 1rem;
 }
 
+/* Todo Card Container */
+.todo-card {
+  background: #ffffff; /* clean white card */
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* soft shadow */
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.todo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.todo-card.completed {
+  opacity: 0.85;
+  background: #f8f9fa; /* slightly gray for completed items */
+}
+
 /* Todo Header */
 .todo-header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .todo-header input[type='checkbox'] {
@@ -340,11 +361,26 @@ body {
   color: #6c757d;
 }
 
+/* Todo Description & Date */
+.todo-description {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.todo-date,
+.todo-eisenhower {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0.25rem 0;
+}
+
 /* Todo Actions */
 .todo-actions {
   display: flex;
   gap: 0.5rem;
   justify-content: flex-end;
+  margin-top: 0.75rem;
 }
 
 .todo-actions button {
@@ -361,7 +397,6 @@ body {
 .todo-actions .not-completed-btn {
   background: #28a745; /* green */
   color: white;
-  border: none;
 }
 
 .todo-actions .not-completed-btn:hover:not(:disabled) {
@@ -372,13 +407,13 @@ body {
 .todo-actions .completed-btn {
   background: #e3f2fd; /* light blue */
   color: #1976d2; /* blue text */
-  border: none;
 }
 
 .todo-actions .completed-btn:hover:not(:disabled) {
   background: #bbdefb; /* slightly darker blue */
 }
 
+/* Edit Button */
 .todo-actions button:nth-child(2) {
   background: #e3f2fd;
   color: #1976d2;
@@ -388,6 +423,7 @@ body {
   background: #bbdefb;
 }
 
+/* Delete Button */
 .todo-actions button.delete-btn {
   background: #ffebee;
   color: #d32f2f;
@@ -397,9 +433,21 @@ body {
   background: #ffcdd2;
 }
 
+/* Disabled Buttons */
 .todo-actions button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.eisenhower-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4f46e5; /* indigo, stands out */
+  background: #e0e7ff; /* light indigo background */
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.25rem;
 }
 
 /* Edit Form */

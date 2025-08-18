@@ -173,11 +173,11 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
                   <>No Due date</>
                 )}
               </p>
-              <p>{todo.eisenhowerLabel}</p>
+              <p className='eisenhower-label'>{todo.eisenhowerLabel}</p>
             </div>
             <div className="todo-actions">
               <button
-                onClick={() => handleToggleComplete}
+                onClick={handleToggleComplete}
                 disabled={isLoading}
                 className={
                   todo.completed ? 'completed-btn' : 'not-completed-btn'
